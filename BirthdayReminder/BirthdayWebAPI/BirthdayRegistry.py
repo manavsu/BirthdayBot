@@ -3,7 +3,7 @@ import datetime
 import threading
 
 class BirthdayRegistry:
-    BirthdayLocation = "BirthdayBotWebAPI/Birthdays.json"
+    BirthdayLocation = 'BirthdayReminder/BirthdayWebAPI/BirthdaysTestData.json'
     Lock = threading.Lock()
 
     def __init__(self):

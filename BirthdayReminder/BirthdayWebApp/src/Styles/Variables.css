@@ -1,0 +1,18 @@
+:root {
+    --title-font-size: max(4vh, 30px);
+    --paragraph-font-size: max(2vh, 15px);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #2e2e2e;
+        --foreground-color: #ffffff;
+    }
+}
+  
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-color: #ffffff;
+        --foreground-color: #2e2e2e;
+    }
+}

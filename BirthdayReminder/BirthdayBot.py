@@ -1,4 +1,4 @@
-from SlackMessageDispatcher import SlackMessageDispatcher
+from SlackAPI.SlackMessageDispatcher import SlackMessageDispatcher
 import requests
 
 def get_birthdays_today(dispatcher):
@@ -6,7 +6,7 @@ def get_birthdays_today(dispatcher):
         return requests.get("http://127.0.0.1:5000/birthdays/today").json()
     except Exception as e:
         print(f"Failed to get birthdays from API - {e}")
-        dispatcher.send_message(f"An exception occurred while attempting to get birthdays.")
+        send_message(f"An exception occurred while attempting to get birthdays.")
         return []
 
 def send_message(dispatcher, message): 
