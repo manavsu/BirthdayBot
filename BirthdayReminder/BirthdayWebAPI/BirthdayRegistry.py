@@ -3,7 +3,7 @@ import datetime
 import threading
 
 class BirthdayRegistry:
-    BirthdayLocation = 'BirthdayReminder/BirthdayWebAPI/BirthdaysTestData.json'
+    BirthdayLocation = '/Users/manav/Documents/Repositories/BirthdayBot/BirthdayReminder/BirthdayWebAPI/BirthdaysTestData.json'
     Lock = threading.Lock()
 
     def __init__(self):
@@ -32,7 +32,7 @@ class BirthdayRegistry:
 
     def to_json(self):
         with self.Lock:
-            return json.dumps({name:self.birthdays[name].to_json() for name in self.birthdays}, indent=4)
+            return json.dumps([{"name":name, "date":self.birthdays[name].to_json()} for name in self.birthdays], indent=4)
 
 class Birthday:
     def from_json(json):

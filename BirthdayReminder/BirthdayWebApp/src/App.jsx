@@ -1,20 +1,22 @@
 import React, {useState, useEffect} from "react";
-import GetBirthdayData from "./Utils/GetBirthdayData.jsx";
 import Loading from "./Components/LoadingComponent.jsx";
-import "./styles/Global.css";
+import GetBirthdayData from "./Utils/GetBirthdayData.jsx";
+import BirthdayRow from "./Components/BirthdayRowComponent.jsx";
+import "./Styles/Global.css"
 
-function App () {
+function App() {
     const [birthdays, setBirthdays] = useState(null);
-    // useEffect(() => {
-    //     GetBirthdayData(setBirthdays);
-    // }, []);
-
-    if (!birthdays) return <Loading />;
+    useEffect(() => {
+        GetBirthdayData(setBirthdays);
+    }, []);
     console.log(birthdays);
+    if (!birthdays) return <Loading />;
+    const fbirthdays = birthdays.map((b) => <BirthdayRow birthday={b}/>)
     return (
-      <h1>found</h1>
+      <>
+        <table><tbody>{fbirthdays}</tbody></table>
+      </>
     );
 }
 
-export default App;
-
+export default App
