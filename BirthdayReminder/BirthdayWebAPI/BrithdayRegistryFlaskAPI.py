@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from BirthdayRegistry import BirthdayRegistry
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -11,18 +11,18 @@ data = BirthdayRegistry()
 def get_items():
     return data.to_json()
 
-@app.route("/birthdays", methods=["POST"])
-def add_item():
-    data.add_birthday(request.json["name"], request.json["month"], request.json["day"])
+@app.route("/birthdays/<name>/<month>/<day>", methods=["POST"])
+def add_item(name, month, day):
+    data.add_birthday(name, month, day)
     return "OK"
 
 @app.route("/birthdays/today", methods=["GET"])
 def get_items_today():
     return jsonify(data.get_birthdays_today())
 
-@app.route("/birthdays", methods=["DELETE"])
-def delete_item():
-    data.delete_birthday(request.json["name"])
+@app.route("/birthdays/<name>", methods=["DELETE"])
+def delete_item(name):
+    data.delete_birthday(name)
     return "OK"
 
 

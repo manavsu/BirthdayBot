@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Loading from "./Components/LoadingComponent.jsx";
-import GetBirthdayData from "./Utils/GetBirthdayData.jsx";
-import BirthdayRow from "./Components/BirthdayRowComponent.jsx";
+import {GetBirthdayData, DeleteBirthdayAndReload} from "./APIUtils/APICalls.jsx";
+import {BirthdayRow, BirthdayRowHeader, AddRow}from "./Components/BirthdayRowComponent.jsx";
 import "./Styles/Global.css";
 
 function App() {
@@ -9,19 +9,15 @@ function App() {
   useEffect(() => GetBirthdayData(setBirthdays), []);
   if (!birthdays) return <Loading />;
 
-  const birthdayRows = birthdays.map((b) => <BirthdayRow birthday={b} />);
+  const birthdayRows = birthdays.map((b) => <li><BirthdayRow birthday={b} onDelete={(name) => DeleteBirthdayAndReload(name, setBirthdays)}/></li>);
 
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>{birthdayRows}</tbody>
-      </table>
+      <ul>
+        <BirthdayRowHeader />
+        {birthdayRows}
+        <AddRow />
+      </ul>
     </>
   );
 }

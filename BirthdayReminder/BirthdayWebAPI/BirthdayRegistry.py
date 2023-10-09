@@ -15,7 +15,12 @@ class BirthdayRegistry:
     def add_birthday(self, name, month, day):
         with self.Lock:
             self.birthdays[name] = Birthday(month, day)
-            self.write_to_store()
+        self.write_to_store()
+    
+    def delete_birthday(self, name):
+        with self.Lock:
+            del self.birthdays[name]
+        self.write_to_store()
 
     def get_birthdays_today(self):
         with self.Lock:

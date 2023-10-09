@@ -1,6 +1,5 @@
 :root {
-    --title-font-size: max(4vh, 30px);
-    --paragraph-font-size: max(2vh, 15px);
+    --font-size: large;
 }
 
 @media (prefers-color-scheme: dark) {
