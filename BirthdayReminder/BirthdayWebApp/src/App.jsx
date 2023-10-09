@@ -1,25 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Loading from "./Components/LoadingComponent.jsx";
-import {GetBirthdayData, DeleteBirthdayAndReload} from "./APIUtils/APICalls.jsx";
-import {BirthdayRow, BirthdayRowHeader, AddRow}from "./Components/BirthdayRowComponent.jsx";
+import Loading from "./components/LoadingComponent.jsx";
+import {GetBirthdayData, DeleteBirthdayAndReload, AddBirthday} from "./APIUtils/APICalls.jsx";
+import BirthdayTable from "./components/BirthdayTableComponent.jsx";
 import "./Styles/Global.css";
 
 function App() {
   const [birthdays, setBirthdays] = useState(null);
   useEffect(() => GetBirthdayData(setBirthdays), []);
   if (!birthdays) return <Loading />;
-
-  const birthdayRows = birthdays.map((b) => <li><BirthdayRow birthday={b} onDelete={(name) => DeleteBirthdayAndReload(name, setBirthdays)}/></li>);
-
-  return (
-    <>
-      <ul>
-        <BirthdayRowHeader />
-        {birthdayRows}
-        <AddRow />
-      </ul>
-    </>
-  );
+  return <BirthdayTable birthdays={birthdays} setBirthdays={setBirthdays}/>;
 }
 
 export default App;

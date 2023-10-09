@@ -1,5 +1,6 @@
 from SlackAPI.SlackMessageDispatcher import SlackMessageDispatcher
 import requests
+import datetime
 
 def get_birthdays_today(dispatcher):
     try:

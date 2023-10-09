@@ -3,7 +3,7 @@
     background-color: var(--background-color);
     margin: 0;
     color: var(--foreground-color);
-    font-size: var(--font-size);
+    /* font-size: var(--font-size); */
 }
 
 p {

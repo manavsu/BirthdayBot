@@ -6,17 +6,31 @@
   justify-content: space-around;
   padding: 10px;
   border-bottom: 1px solid var(--foreground-color);
-  /* width: max(400px, 40vw); */
-  width: 50%;
+  width: max(50%, 800px * 0.8);
   margin-left: auto;
   margin-right: auto;
+  font-size: large;
 }
 
-.birthday_row p, .button_container {
-  width: 40%;
+@media (max-width: 800px) {
+    .birthday_row {
+        width: 80%;
+        font-size: medium;
+    }
+}
+
+.birthday_row p, .button_container, .input_container {
+  width: 30%;
   padding-left: 20px;
   padding-right: 20px;
   text-align: center;
+  font-size: inherit;
+}
+
+.date_input {
+    width: 40%;
+    text-align: center;
+    font-size: inherit;
 }
 
 .button {

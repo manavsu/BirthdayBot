@@ -5,7 +5,7 @@ import logging
 
 class SlackMessageDispatcher:
     def __init__(self):
-        WebHook_URL_Location = "SlackAPI/WebHookURL.txt"
+        WebHook_URL_Location = "config/WebHookURL.txt"
         with open(WebHook_URL_Location, "r") as webhook_url_file:
             self.Webhook_URL = webhook_url_file.read()
 

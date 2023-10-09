@@ -8,8 +8,8 @@ function DeleteBirthdayAndReload(name, setBirthdays) {
     fetch('http://127.0.0.1:5000/birthdays/' + name, {method: 'DELETE'}).then(() => GetBirthdayData(setBirthdays));
 }
 
-function AddBirthday(name, month, day, setBirthdays) {
+function AddBirthdayAndReload(name, month, day, setBirthdays) {
     fetch('http://127.0.0.1:5000/birthdays/' + name + '/' + month + '/' + day, {method: 'POST'}).then(() => GetBirthdayData(setBirthdays));
 }
 
-export {GetBirthdayData, DeleteBirthdayAndReload, AddBirthday}
+export {GetBirthdayData, DeleteBirthdayAndReload, AddBirthdayAndReload as AddBirthday}
