@@ -12,4 +12,13 @@ function BirthdayRow({ birthday }) {
   );
 }
 
+function BirthdayRowHeader() {
+  return (
+    <tr className="birthday">
+      <th>Name</th>
+      <th>Date</th>
+    </tr>
+  );
+}
+
 export default BirthdayRow;
